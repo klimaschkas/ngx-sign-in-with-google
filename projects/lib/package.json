@@ -11,5 +11,12 @@
   },
   "devDependencies": {
     "@types/google.accounts": "^0.0.2"
-  }
+  },
+  "keywords": [
+    "angular",
+    "social-login",
+    "google-authentication",
+    "google",
+    "auth"
+  ]
 }

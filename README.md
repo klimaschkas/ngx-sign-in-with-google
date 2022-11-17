@@ -81,6 +81,11 @@ constructor(
 ) {}
 ```
 
+### Render login button
+```angular2html
+<with-google-auth-button></with-google-auth-button>
+```
+
 ### Access user details
 Use `this.authService.getIdToken()` to get an instance of [WithGoogleAuthIdToken](https://github.com/klimaschkas/ngx-sign-in-with-google/blob/master/projects/lib/src/definitions.ts#L3).
 

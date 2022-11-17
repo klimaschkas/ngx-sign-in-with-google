@@ -1,6 +1,6 @@
 {
-  "name": "ngx-sign-in-with-google",
-  "version": "0.0.0",
+  "name": "ngx-sign-in-with-google-wrapper",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

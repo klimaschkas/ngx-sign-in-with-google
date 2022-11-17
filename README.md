@@ -26,7 +26,7 @@ this library was created.
 At first, follow the [setup guide](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid).
 
 Extend your app.module.ts with the following config (more details about the config can be found in the [JavaScript API](https://developers.google.com/identity/gsi/web/reference/js-reference):
-```
+```typescript
   imports: [
     ...,
     WithGoogleAuthModule
@@ -74,19 +74,37 @@ The `interceptUrlPrefixes` in the example would
 
 If you don't want to intercept anything, assign the interceptUrlPrefixes an empty array.
 
-### Get notified of login/logout
-```
+### Injecting the service
+```typescript
 constructor(
-  public authService: WithGoogleAuthService
+  private authService: WithGoogleAuthService
 ) {}
-  
-def demo() {
-  let authEvents = this.authService.getEventSubject()
-  authEvents.subscribe({
-    next: (v) => console.log(v.event),
-    error: (e) => console.error(e)
-  })  
-}
+```
+
+### Access user details
+Use `this.authService.getIdToken()` to get an instance of [WithGoogleAuthIdToken](https://github.com/klimaschkas/ngx-sign-in-with-google/blob/master/projects/lib/src/definitions.ts#L3).
+
+```typescript
+let idToken = this.authService.getIdToken()
+console.log(idToken.name)       // display user's name
+```
+
+```angular2html
+<!-- Show the user's profile picture if they are logged in -->
+<img
+  *ngIf="authService.getIdToken() !== undefined"
+  [src]="authService.getIdToken()!.picture"
+>
+```
+
+### Get notified of login/logout
+```typescript
+let authEvents = this.authService.getEventSubject()
+
+authEvents.subscribe({
+  next: (v) => console.log(v.event),
+  error: (e) => console.error(e)
+})
 ```
 
 ## Author

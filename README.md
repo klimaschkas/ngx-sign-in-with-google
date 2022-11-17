@@ -19,9 +19,10 @@ this library was created.
 * Intercepting httpClient requests which match defined prefixes with the `WithGoogleAuthInterceptor` to add access token to the request
 
 ## Installation
-Following soon.
+`npm install ngx-sign-in-with-google`
 
 ## Usage
+### Setup
 At first, follow the [setup guide](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid).
 
 Extend your app.module.ts with the following config (more details about the config can be found in the [JavaScript API](https://developers.google.com/identity/gsi/web/reference/js-reference):
@@ -64,12 +65,29 @@ Extend your app.module.ts with the following config (more details about the conf
 ```
 
 The `interceptUrlPrefixes` in the example would 
-* intercepted: https://example.com/v1/auth/some/route
-* intercepted: https://example.com/v1/auth/
-* NOT intercepted: https://example.com/v1/auth
-* NOT intercepted: https://example.com/v1
-* NOT intercepted: https://example.com/v1/another/route
-* intercepted: https://example.com/v2/route
+* intercept: https://example.com/v1/auth/some/route
+* intercept: https://example.com/v1/auth/
+* NOT intercept: https://example.com/v1/auth
+* NOT intercept: https://example.com/v1
+* NOT intercept: https://example.com/v1/another/route
+* intercept: https://example.com/v2/route
+
+If you don't want to intercept anything, assign the interceptUrlPrefixes an empty array.
+
+### Get notified of login/logout
+```
+constructor(
+  public authService: WithGoogleAuthService
+) {}
+  
+def demo() {
+  let authEvents = this.authService.getEventSubject()
+  authEvents.subscribe({
+    next: (v) => console.log(v.event),
+    error: (e) => console.error(e)
+  })  
+}
+```
 
 ## Author
 Simon Klimaschka (@klimaschkas)

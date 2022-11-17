@@ -1,6 +1,13 @@
 {
   "name": "ngx-sign-in-with-google",
-  "version": "0.1.3",
+  "version": "0.1.4",
+  "description": "Angular package implementing Sign In with Google, including automatic refresh and access token injection.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klimaschkas/ngx-sign-in-with-google.git"
+  },
+  "homepage": "https://github.com/klimaschkas/ngx-sign-in-with-google",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": ">= 12.0.0",
     "@angular/core": ">= 12.0.0",
